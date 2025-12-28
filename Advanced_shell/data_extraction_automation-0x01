@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Use advanced text manipulation tools (jq, awk, sed) to extract specific data from the API response.
+
 # extract data using jq
 name=$(jq -r '.name' data.json)
 height=$(jq '.height' data.json | awk '{print $1/10}')

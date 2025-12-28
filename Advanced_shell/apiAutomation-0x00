@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Automate the process of making API requests to the Pokémon API and saving the results to a file
+
 # API URL
 URL="https://pokeapi.co/api/v2/pokemon/pikachu"
 
