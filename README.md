@@ -92,3 +92,32 @@ This task generates a summarized report from multiple Pokémon JSON files.
 ### Output
 - CSV file containing Pokémon data.
 - Printed average height and weight to the terminal.
+
+
+## Task 4: Error Handling and Retry Logic
+
+This task enhances the batch Pokémon data retrieval script with robust error handling.
+
+### Implementation
+- Added retry logic to attempt each API request up to three times.
+- Used a loop to retry failed requests before skipping a Pokémon.
+- Logged persistent failures to an `errors.txt` file with timestamps.
+- Ensured the script continues execution even when individual requests fail.
+- Added delays between requests to handle API rate limiting.
+
+### Outcome
+The script is now more reliable and resilient to network or API failures.
+
+## Task 5: Parallel Pokémon Data Retrieval
+
+This task improves performance by fetching Pokémon data concurrently.
+
+### Implementation
+- Used background processes (`&`) to fetch multiple Pokémon simultaneously.
+- Encapsulated API requests in a reusable function.
+- Ensured all background processes completed using the `wait` command.
+- Saved each Pokémon’s data into separate JSON files.
+- Logged failures without interrupting other parallel jobs.
+
+### Outcome
+Parallel execution significantly reduced data retrieval time while maintaining reliability.

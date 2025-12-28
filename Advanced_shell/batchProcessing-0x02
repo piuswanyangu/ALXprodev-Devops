@@ -1,31 +1,43 @@
 #!/bin/bash
 
-# Automate the retrieval of data for multiple Pokémon and store it in separate files.
-
-# create a directory to sore all pokemon json files
 DATA_DIR="pokemon_data"
+ERROR_FILE="errors.txt"
 mkdir -p "$DATA_DIR"
 
-# list pokemon
+# Pokémon list
 POKEMONS=("bulbasaur" "ivysaur" "venusaur" "charmander" "charmeleon")
 
-# loop through each pokemon
-for pokemon in "${POKEMONS[@]}"; do 
+MAX_RETRIES=3
+
+for pokemon in "${POKEMONS[@]}"; do
     echo "Fetching data for $pokemon..."
 
-    # API URL 
     URL="https://pokeapi.co/api/v2/pokemon/$pokemon"
+    OUTPUT_FILE="$DATA_DIR/$pokemon.json"
 
-    # fetch data and save to file
-    curl -s -f "$URL" -o "$DATA_DIR/$pokemon.json"
+    attempt=1
+    success=false
 
-    # check if curl succeeded
-    if [ $? -eq 0 ]; then
-        echo "Saved data to $DATA_DIR/$pokemon.json"
-    else
-        echo "Failed to fetch data for $pokemon" >> errors.txt
-    fi 
+    while [ $attempt -le $MAX_RETRIES ]; do
+        curl -s -f "$URL" -o "$OUTPUT_FILE"
 
-        # wait 1 second to avoid rate-limiting
+        if [ $? -eq 0 ]; then
+            echo "Saved data to $OUTPUT_FILE ✅"
+            success=true
+            break
+        else
+            echo "Attempt $attempt failed for $pokemon. Retrying..."
+            sleep 1
+        fi
+
+        attempt=$((attempt + 1))
+    done
+
+    if [ "$success" = false ]; then
+        echo "Failed to fetch data for $pokemon after $MAX_RETRIES attempts at $(date)" >> "$ERROR_FILE"
+        echo "Skipping $pokemon ❌"
+    fi
+
+    # Delay to avoid rate limiting
     sleep 1
 done
