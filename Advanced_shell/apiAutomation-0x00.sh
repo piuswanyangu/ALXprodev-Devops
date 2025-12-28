@@ -1,0 +1,17 @@
+#!/bin/bash
+# API URL
+URL="https://pokeapi.co/api/v2/pokemon/pikachu"
+
+# output files
+DATA_FILE="data.json"
+ERROR_FILE="errors.txt"
+
+# make api request
+curl -s -f "$URL" -o "$DATA_FILE"
+
+# check if curl succeeded
+f [ $? -ne 0 ]; then 
+    echo "Failed to fetch Pokemon data at  $(date)"
+    exit 1
+i 
+echo "Pokemon data successfully saVed to $DATA_FILE
