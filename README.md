@@ -57,3 +57,22 @@ This task focuses on extracting and transforming specific fields from a JSON API
 
 ### Sample Output
 Pikachu is of type Electric, weighs 6kg, and is 0.4m tall.
+
+
+## Task 2: Batch Pokémon Data Retrieval
+
+This task automates fetching data for multiple Pokémon using a loop.
+
+### Implementation
+- Created a directory `pokemon_data` to store JSON files.
+- Defined an array of Pokémon: Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon.
+- Used a `for` loop to fetch data from the Pokémon API.
+- Saved each Pokémon’s data in a separate JSON file named after the Pokémon.
+- Implemented error handling and logged failures to `errors.txt`.
+- Added `sleep 1` between requests to avoid rate-limiting.
+
+### Sample Output
+Fetching data for bulbasaur...
+Saved data to pokemon_data/bulbasaur.json ✅
+Fetching data for ivysaur...
+Saved data to pokemon_data/ivysaur.json ✅
