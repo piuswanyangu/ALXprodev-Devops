@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# extract data using jq
+name=$(jq -r '.name' data.json)
+height=$(jq '.height' data.json | awk '{print $1/10}')
+weight=$(jq '.weight' data.json | awk '{print $1/10}')
+type=$(jq -r '.types[0].type.name' data.json | sed 's/.*/\u&/')
+
+# Print formatted output
+echo "$name is of type $type, weighs ${weight}kg, and ${height}m tall."

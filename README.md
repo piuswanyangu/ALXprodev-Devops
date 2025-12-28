@@ -44,3 +44,16 @@ jq . data.json | head -n 50
 # Learning Outcome
 
 This task demonstrates basic API interaction from the command line, file handling, and error checking in shell scripting. It simulates a real-world data extraction step commonly used in DevOps and Data Engineering workflows.
+
+## Task 1: Extract Pokémon Data
+
+This task focuses on extracting and transforming specific fields from a JSON API response using command-line text processing tools.
+
+### Implementation
+- Used `jq` to extract the Pokémon’s name, height, weight, and type from `data.json`.
+- Used `awk` to convert height and weight into meters and kilograms.
+- Used `sed` to format the Pokémon type with proper capitalization.
+- Displayed the extracted data in a clear, human-readable sentence.
+
+### Sample Output
+Pikachu is of type Electric, weighs 6kg, and is 0.4m tall.
