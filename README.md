@@ -76,3 +76,19 @@ Fetching data for bulbasaur...
 Saved data to pokemon_data/bulbasaur.json ✅
 Fetching data for ivysaur...
 Saved data to pokemon_data/ivysaur.json ✅
+
+
+## Task 3: Pokémon Data Report
+
+This task generates a summarized report from multiple Pokémon JSON files.
+
+### Implementation
+- Read all Pokémon JSON files from the `pokemon_data` directory.
+- Extracted name, height, and weight using `jq`.
+- Converted height and weight into meters and kilograms using `awk`.
+- Generated a CSV file named `pokemon_report.csv`.
+- Used `awk` to calculate the average height and weight of all Pokémon.
+
+### Output
+- CSV file containing Pokémon data.
+- Printed average height and weight to the terminal.
